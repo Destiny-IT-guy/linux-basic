@@ -20,11 +20,11 @@ If all package managers downloaded software from a single server, it would quick
 
 Common linux package manager include **APT** on debian base system, **DNF/YUM** on Fedora and Red Hat-base distributions and Pacman on ARCH linux. These are official distribution package manager. Linux also support universal packaging system like ***Snap**, **Flatpak** and more. These formats are very useful because they work across multiple distributions, but applications installed this way usually take up more disk space since they bundle their dependencies.
 
-All of these package managers download software from trusted repo, which are hosted on servers around the world. To make downloads faster and more reliable, these repo's are copied to mutiple server called mirrors. When you install or update software, you package manager gets it from a nearby mirror instead of getting it from a single centralize server.
+All of these package managers download software from trusted repo, which are hosted on servers around the world. To make downloads faster and more reliable, these repo's are copied to multiple server called mirrors. When you install or update software, you package manager gets it from a nearby mirror instead of getting it from a single centralize server.
 
 ## Configuring mirror
 
-Mirrors are usually configured by default on your system but sometimes they arent the best. Do the following to manually change you mirror on debian base distros.
+Mirrors are usually configured by default on your system but sometimes they aren't the best. Do the following to manually change you mirror on debian base distro.
 
 Go to `/etc/apt/sources.list` or `/etc/apt/sources.list.d/ubuntu.sources`
 
@@ -44,7 +44,7 @@ Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 ```
 
-Modify the URIs that doesnt' contain security word in it.
+Modify the URIs that doesn't contain security word in it.
 
 Finally use the `sudo apt command` to save file and update package list.
 

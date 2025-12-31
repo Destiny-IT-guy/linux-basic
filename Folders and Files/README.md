@@ -1,6 +1,6 @@
 # Files and Folders
 
-In linux everything is a file even folders and end device like external hardrive and keyboard etc. there are many type of file but I will seperate them into 7 different groups
+In linux everything is a file even folders and end device like external hard drives, keyboards  etc. There are many type of file but I will separate them into 7 different groups
 
 ## file type
 
@@ -11,7 +11,7 @@ In linux everything is a file even folders and end device like external hardrive
 | l | Symbolic link | shortcut to other file | `/bin,` `/lib,` `/usr/bin` |
 | b | Block files   | hard drive , usb  | `/dev` |
 | c | Character device | keyboard, monitors, etc | `/dev` |
-| s | Socket files | inter-process communicatoin (IPC) | `/var/run`, `/run` |
+| s | Socket files | inter-process communications (IPC) | `/var/run`, `/run` |
 | p | named piped file | process communication | `/tmp`, `/run` |
 
 To be able to see file symbol use the `ls -l` command in terminal and you should see something like this.
@@ -22,6 +22,7 @@ drwxrwxr-x 2 test test      4096 Dec  7 23:47 FTP
 ```
 
 ### file ownership
+
 Each file has 3 types of ownership.
 
 | Type    | definition  | example |
@@ -30,7 +31,7 @@ Each file has 3 types of ownership.
 | Group   | A group of users associated with the files | admins |
 | Other   | Every other user who isn't the owner or in the group | anyone |
 
-Depending on file ownership, the user will have different actions he can perform on the files. There are 3 types of permission. these are
+Depending on file ownership, the user will have different actions he can perform on the files. There are 3 types of permission. These are
 
 | Permission | for files | for directories | number |
 |-----------|-----------|-----------------|--------|
@@ -44,7 +45,7 @@ so let me explain the following file ownership
 drwxrwxr-x 2 test test      4096 Dec  7 23:47 FTP
 ```
 
-The files named ftp is a folder. The first set of letter define the permision of the file owner. The second define permision of the group and third define other user. The first test define the owner of the file the second define the Group. if I wanted to manualy do all of that to a new directory I would do the following.
+The files named ftp is a folder. The first set of letter define the permission of the file owner. The second define permission of the group and third define other user. The first test define the owner of the file the second define the Group. If I wanted to manually do all of that to a new directory I would do the following.
 
 ```bash
 chmod 775 FTP/

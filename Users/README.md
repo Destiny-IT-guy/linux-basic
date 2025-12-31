@@ -1,38 +1,38 @@
 # Users
 
- A user is an individual account that can log in to the system. Each linux user has a username, a user id (uid), a home directory, and a default shell. You can assign users to group which help manage permission access to files and folders. Before i continue i must explain all users type. there are 3 type of users in linux.
+ A user is an individual account that can log in to the system. Each linux user has a username, a user id (uid), a home directory, and a default shell. You can assign users to group which help manage permission access to files and folders. Before I continue I must explain all users type. There are 3 type of users in linux.
 
  | type | definition |
  |------|------------|
- | root | root is the superuser. he has full control of the system and has a uid of 0. |
- | Regular users | non admin users created for every day work. usually has limited permission, |
+ | root | root is the superuser. He has full control of the system and has a uid of 0. |
+ | Regular users | non admin users created for every day work. Usually has limited permission, |
  | System users | User created by the system used for running services like web servers, database etc. |
 
 ## User creation and modification
 
 ### user creation
 
-There are 2 command we can use to create a user. they are the following
+There are 2 command we can use to create a user. They are the following
 
 ```bash
 sudo adduser username
 sudo useradd username
 ```
 
-It is recommended to use adduser because it is interactive. it forces you to enter a password for the user and it will create a home directory for the user. useradd doesn't prompt you to create a password. here is another better way to use useradd
+It is recommended to use adduser because it is interactive. It forces you to enter a password for the user and it will create a home directory for the user. useradd doesn't prompt you to create a password. Here is another better way to use useradd
 
 ```bash
 sudo useradd -m -s /bin/bash username
 sudo passwd username
 ```
 
-The `-m` will create a home directory and the `-s /bin/bash` will set bin bash at the user shell. finally passwd will prompt you to set the user password.
+The `-m` will create a home directory and the `-s /bin/bash` will set bin bash at the user shell. Finally passwd will prompt you to set the user password.
 
 ### modify user
 
 To change password you can also use `passwd` command.
 
-<b><u>usermod</b></u> is a tool used to modify user account. There are many option for this command so i will make a table to list off some basic option
+<b><u>usermod</b></u> is a tool used to modify user account. There are many option for this command so I will make a table to list off some basic option
 
 basic syntax<br>
 `sudo usermod [option] username`
@@ -66,12 +66,12 @@ Here are basic groups command.
 |-----|---------|-------|
 | groupadd| Create new group | `sudo groupadd FTP` |
 | groupdel | delete a group | `sudo groupdel  FTP` |
-|getent group group| list all user of a specific group | `getent group FTP` |
+| getent group group| list all user of a specific group | `getent group FTP` |
 
 ## sudoers
 
 The sudoers file is a configuration file located at /etc/sudoers that controls privileges for users and groups to execute command as other user. This is often use to gain root privileges.<br><br> 
-To avoid syntax errors that can cause great problem, always use `visudo` command to edit sudoers file. you could change `/etc/sudoers` files permission and modify it from there but that isn't recommended
+To avoid syntax errors that can cause great problem, always use `visudo` command to edit sudoers file. You could change `/etc/sudoers` files permission and modify it from there but that isn't recommended
 
 ### basic sudoers syntax
 
@@ -91,13 +91,13 @@ Explanation. The user is james. The first ALL determines which hosts the rule ap
 The second ALL determines which user(s) the command can run as.  
 The third ALL determines which commands can be run.
 
- Let say i want to be more specific i want my user be able to only run this command systemctl restart apache2 as root user from a specific ip i would use this 
+ Let say I want to be more specific I want my user be able to only run this command systemctl restart apache2 as root user from a specific ip I would use this.
 
  ```bash
  james 192.168.2.24=(root) /usr/bin/systemctl restart apache2
  ```
 
- if i wanted to allow to restart any services i could use * after the restart like this 
+ If I wanted to allow to restart any services I could use * after the restart like this.
 
 ```bash
 ....systemctl restart *
@@ -109,7 +109,7 @@ This would allow him to restart other services installed on the server like mysq
 
 ### sudoers.d
 
-Instead of putting all sudoers configuration in a single file you can create extra file in /sudoers.d to better manage your sudoers configuration. all files in this folder act as if they were sudoers file
+Instead of putting all sudoers configuration in a single file you can create extra file in /sudoers.d to better manage your sudoers configuration. All files in this folder act as if they were sudoers file
 
 ## important /etc files
 
@@ -117,7 +117,7 @@ There 3 to 4 import /etc files that are useful for user and group info.
 
 ### /etc/passwd
 
-This is a file that stores basic information about users. each line represent a user. No password are stored here. This is an example of 2 line in this file
+This is a file that stores basic information about users. Each line represent a user. No password are stored here. This is an example of 2 line in this file
 
 ```bash
 root:x:0:0:root:/root:/bin/bash
@@ -129,10 +129,10 @@ each line has 7 different fields separated by `:`.
 | column number | column name | explanation | example |
 |---------------|-------------|-------------|---------|
 | 1 | username | User's login name | root or daemon |
-| 2 | password | placeholder for password. it will be x if password in /etc/shadow | x |
+| 2 | password | placeholder for password. It will be x if password in /etc/shadow | x |
 | 3 | UID | User id unique number for each user. Regular user UID will be ≥ 1000 | 0 or 1 or 1000 |
 | 4 | GID | Primary group id | o or 1 or 1000 |
-| 5 | GECOS | optional info like full name, phone and more. often blank | ::  | 
+| 5 | GECOS | optional info like full name, phone and more. Often blank | ::  | 
 | 6 | Home directory | Path to user home folder | /root or /home/user |
 | 7 | shell | The shell executed upon login | /bin/bash |
 
@@ -144,15 +144,15 @@ common shell type
 
 | shell | Description |
 |-------|-------------|
-| `/bin/bash` | Standard. default on most systems. Good for daily use and scripting |
-| `/bin/zsh` | z shell. has some advanced feature. auto completion |
+| `/bin/bash` | Standard. Default on most systems. Good for daily use and scripting |
+| `/bin/zsh` | z shell. Has some advanced feature. Auto completion |
 | `/bin/dash` | a faster version of `/bin.sh` |
 
-No-login shells are used to prevent user to connecting to those acoount but system can still use account for services and own files. Here are some you might see.
+No-login shells are used to prevent user to connecting to those account but system can still use account for services and own files. Here are some you might see.
 
 | shell | Description |
 |-------|-------------|
-| `/usr/sbin/nologin` | Denies login to user but allow account to be used for services. Show a mssage when you try to login |
+| `/usr/sbin/nologin` | Denies login to user but allow account to be used for services. Show a message when you try to login |
 | `/sbin/nologin` | same as above just a shortcut |
 | `/bin/false` | Prevent login silently. Doesn't show a message when you try to login |
 
@@ -164,7 +164,7 @@ chsh -s /bin/bash
 
 ## etc/shadow
 
-This file stores encrypted password and password policies. like /etc/passwd each line represent a single user.
+This file stores encrypted password and password policies. Like /etc/passwd each line represent a single user.
 
 here is an example of a line in the file :
 
@@ -184,7 +184,7 @@ daemon:*:20135:0:99999:7:::
 | 7 | Inactive | number of days after password expired before account is disabled | 31 |
 | 8 | expired | The exact date the account was expired. Reference date is also jan 1st, 1970 | 20420 |
 
-the 2nd field is the hash password field. the field starts with an ID after the first dollar signs. This value determine which hash algorithm what use. here is a basic of the main values
+the 2nd field is the hash password field. The field starts with an ID after the first dollar signs. This value determine which hash algorithm what use. Here is a basic of the main values
 
 | id | hash algorithm |
 |----|----------------|
@@ -194,11 +194,11 @@ the 2nd field is the hash password field. the field starts with an ID after the 
 | $6$ | SHA-512 |
 | $y$ | yescrypt |
 
-To modify future hash for futur password use the following method
+To modify future hash for future password use the following method
 
 Go in the file `/etc/login.defs`
 
-search for `ENCRYPT_METHOD`. 
+search for `ENCRYPT_METHOD`.
 
 Update it to one of the following
 
@@ -236,7 +236,7 @@ There are 3 symbols you might see. This is a brief explanation.
 
 ### change value
 
-Let say you want to change the min, max, warning or inactive value for a user. You can use the `chage` command here is a quick guide 
+Let say you want to change the min, max, warning or inactive value for a user. You can use the `chage` command here is a quick guide
 
 | field | option | example |
 |-------|--------|---------|
@@ -247,7 +247,7 @@ Let say you want to change the min, max, warning or inactive value for a user. Y
 
 ## /etc/group
 
-stores group information. like the other one line per group.
+stores group information. Like the other one line per group.
 
 here is a brief example:
 
@@ -263,7 +263,7 @@ adm:x:4:syslog
 | 1 | Group name | Name of group | root,sys |
 | 2 | password | placeholder for password stored in `/etc/gshadow` | x |
 | 3 | GID | Group ID | 1, 4, 1000 |
-| 4 | user list | name of users in the group seperated by commas | root, james |
+| 4 | user list | name of users in the group separated by commas | root, james |
 
 ## Change user
 
@@ -273,7 +273,7 @@ In linux you can use the `su command to change user. Like this:
 su james
 ```
 
-you can also use this option to make sure you switch to the user environement.
+you can also use this option to make sure you switch to the user environment.
 
 ```bash
 su - james
@@ -286,4 +286,3 @@ sudo su -
 ```
 
 lastly if you want to go back to previous user just type `exit`.
-
